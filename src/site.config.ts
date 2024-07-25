@@ -32,10 +32,10 @@ export const menuLinks: Array<{ title: string; path: string }> = [
 		title: "about",
 		path: "/about/",
 	},
-	// {
-	// 	title: "now",
-	// 	path: "/now/",
-	// },
+	{
+		title: "resume",
+		path: "/src/assets/pdfs/cv.pdf",
+	},
 	// {
 	// 	title: "resume",
 	// 	path: "/resume/",
