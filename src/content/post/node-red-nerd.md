@@ -18,7 +18,7 @@ this post tells you how to install node-red in a way that you can use it like a 
 
 i use [bun](https://bun.sh/) for everything javascript nowadays. so i decided to install and manage node-red with it too. since i haven’t faced any issues yet and it’s way faster and cooler, i would recommend you to do that too. at the time of writing bun is relatively stable in windows and almost usable in unix. how bad can it be? if it's not your cup of tea just use node instead, it's not that hard. i'll update the instructions for that too when i get the time.
 
-```bash
+```bash frame="code"
 bunx --bun node-red
 ```
 
@@ -34,7 +34,7 @@ if you don't know already i'm a dark mode fanatic. i can't live with staring at 
 
 1. navigate to `$HOME/.node-red` in terminal and install community themes
 
-   ```bash
+   ```bash frame="none"
    bun install @node-red-contrib-themes/theme-collection
    ```
 
