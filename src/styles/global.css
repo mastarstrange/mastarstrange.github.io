@@ -6,15 +6,17 @@
 	:root,
 	:root[data-theme="light"] {
 		color-scheme: light;
-		/* --theme-bg: 52deg 100% 91%; */
-		--theme-bg: 49deg 38% 94%;
+		--theme-bg: 220deg 23% 95%;
+    /* --theme-bg: 223deg 16% 83%; */
 		/* --theme-link: 172deg 18% 41%; */
-		--theme-link: 137, 180, 250;
+		--theme-link: 220deg 91% 40%;
+    /* --theme-link: 233deg 13% 41%; */
 		/* --theme-text: 203deg 11% 15%; */
-		--theme-text: blue-300;
-		--theme-accent: 351deg 66% 48%;
-		--theme-accent-2: 0deg 0% 7%;
-		--theme-quote: 351deg 66% 48%;
+    --theme-text: 234deg 16% 0%;
+		--theme-accent: 35deg 77% 30%;
+		--theme-accent-2: 35deg 77% 30%;
+		/* --theme-accent-2: 0deg 0% 7%; */
+		--theme-quote: 109deg 58% 30%;
 	}
 
 	:root[data-theme="dark"] {

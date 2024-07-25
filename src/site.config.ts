@@ -34,7 +34,7 @@ export const menuLinks: Array<{ title: string; path: string }> = [
 	},
 	{
 		title: "resume",
-		path: "/src/assets/pdfs/cv.pdf",
+		path: "/pdfs/cv.pdf",
 	},
 	// {
 	// 	title: "resume",
