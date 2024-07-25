@@ -34,7 +34,7 @@ export const menuLinks: Array<{ title: string; path: string }> = [
 	},
 	{
 		title: "resume",
-		path: "/pdfs/cv.pdf",
+		path: "https://docs.google.com/viewer?url=https://raw.githubusercontent.com/thuvasooriya/thuvasooriya/main/cv.pdf",
 	},
 	// {
 	// 	title: "resume",
