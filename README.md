@@ -18,17 +18,17 @@ see ya on the other side. ✌🏽
 
 ## todo
 
-- [ ] add my projects
+- [ ] add my projects page
+- [ ] cleanup about page and resume page
 - [ ] now page
 - [ ] add rest of my blog posts
-- [ ] font change to JetBrains Mono
+- [ ] try JetBrains Mono as content font
 - [ ] welcome message in many langs
 - [ ] katex font issues
-- [ ] fix dark mode and search icons
-- [ ] back to top icon change
-- [ ] reader can switch fonts
-- [ ] portable markdown planning
+- [ ] change theme toggle and search backtotop icons
+- [ ] ability to change font, preset zoom levels
 - [ ] make links and buttons interactive and responsive
+- [ ] ~portable markdown planning~ reorganize astro content folder structure for blog, lists, devlog
 - [x] ~proper logo setup~
 - [x] redesign the logo
 - [x] proper color pallette
