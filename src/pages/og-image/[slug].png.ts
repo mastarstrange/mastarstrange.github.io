@@ -12,7 +12,7 @@ import JBMonoBold from "@/assets/jbm/JetBrainsMono-Bold.ttf";
 const ogOptions: SatoriOptions = {
 	width: 800,
 	height: 418,
-	debug: true,
+	// debug: true,
 	fonts: [
 		{
 			name: "JetBrains Mono",
