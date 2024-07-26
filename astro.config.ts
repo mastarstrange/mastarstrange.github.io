@@ -58,7 +58,6 @@ export default defineConfig({
 		jotter: "https://jotter4u.fly.dev/",
 	},
 	site: "https://thuvasooriya.me",
-	// https://docs.astro.build/en/guides/prefetch/
 	vite: {
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
