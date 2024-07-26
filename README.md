@@ -16,34 +16,31 @@ see ya on the other side. ✌🏽
 - tailwindcss
 - markdown
 
-nothing fancy yet
-
 ## todo
 
-- [x] ~proper logo setup~
-- [ ] redesign the logo
-- [ ] welcome message in many langs
-- [ ] proper color pallette
-- [ ] font change to JetBrains Mono
-- [ ] fix satori
-- [ ] resume page
 - [ ] add my projects
 - [ ] now page
 - [ ] add rest of my blog posts
+- [ ] font change to JetBrains Mono
+- [ ] welcome message in many langs
+- [ ] katex font issues
+- [ ] fix dark mode and search icons
+- [ ] back to top icon change
+- [ ] reader can switch fonts
+- [ ] portable markdown planning
+- [ ] make links and buttons interactive and responsive
+- [x] ~proper logo setup~
+- [x] redesign the logo
+- [x] proper color pallette
+- [x] fix satori
+- [x] resume page
 - [x] fix dates
 - [x] embrace snake case for footnotes, and dates
 - [x] fix image viewer
 - [x] social links fixes
 - [x] latex support
-- [ ] katex font issues
-- [ ] fix dark mode and search icons
-- [ ] back to top icon change
-- [ ] reader can switch fonts
-- [ ] nav redesign
-
-- [ ] portable markdown planning
-- [ ] make links and buttons interactive and responsive
-- [ ] add more animations
+- [x] nav redesign
+- [x] add more animations
 
 ### credits
 
