@@ -28,6 +28,7 @@ see ya on the other side. ✌🏽
 - [ ] change theme toggle and search backtotop icons
 - [ ] ability to change font, preset zoom levels
 - [ ] make links and buttons interactive and responsive
+- [ ] automate submodule pull
 - [ ] ~portable markdown planning~ reorganize astro content folder structure for blog, lists, devlog
 - [x] ~proper logo setup~
 - [x] redesign the logo
