@@ -3,8 +3,8 @@ import type { AstroExpressiveCodeOptions } from "astro-expressive-code";
 
 export const siteConfig: SiteConfig = {
 	author: "thuvasooriya",
-	title: "humbled",
-	description: "hot mess of a site that also serves as a brain dump of a fucking cool person",
+	title: "sooriya",
+	description: "[me to me]: shut up, i'm thinking...",
 	lang: "en-US",
 	ogLocale: "en_US",
 	// Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.

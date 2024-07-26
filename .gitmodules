@@ -1,0 +1,3 @@
+[submodule "src/content/post"]
+	path = config/config/post
+	url = https://github.com/thuvasooriya/catalog.git

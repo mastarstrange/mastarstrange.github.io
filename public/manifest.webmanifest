@@ -1,6 +1,6 @@
 {
 	"name": "Thuva Sooriya's Site",
-	"short_name": "humbled",
+	"short_name": "sooriya",
 	"description": "my dream site in the dreaming stage",
 	"icons": [
 		{
@@ -15,7 +15,7 @@
 		}
 	],
 	"start_url": "/",
-	"background_color": "#1d1f21",
-	"theme_color": "#2bbc8a",
+	"background_color": "#ffffff",
+	"theme_color": "#ffffff",
 	"display": "standalone"
 }
