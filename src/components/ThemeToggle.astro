@@ -1,8 +1,5 @@
 <theme-toggle class="ms-2 sm:ms-4">
-	<button
-		class="relative h-9 w-9 rounded-md p-2 ring-zinc-400 transition-all hover:ring-2"
-		type="button"
-	>
+	<button class="hover:text-accent relative h-9 w-9 cursor-pointer rounded-md p-2" type="button">
 		<span class="sr-only">Dark Theme</span>
 		<svg
 			aria-hidden="true"
@@ -56,42 +53,30 @@
 </theme-toggle>
 
 <script>
-	// Note that if you fire the theme-change event outside of this component, it will not be reflected in the button's aria-checked attribute
-	import { rootInDarkMode } from "@/utils";
+	// Note that if you fire the theme-change event outside of this component, it will not be reflected in the button's aria-checked attribute. You will need to add an event listener if you want that.
+	import { rootInDarkMode } from "@/utils/domElement";
 
 	class ThemeToggle extends HTMLElement {
-		#controller: AbortController | undefined;
-
 		connectedCallback() {
-			const button = this.querySelector("button")!;
+			const button = this.querySelector<HTMLButtonElement>("button")!;
 			// set aria role value
 			button.setAttribute("role", "switch");
 			button.setAttribute("aria-checked", String(rootInDarkMode()));
-			// Abort signal
-			const { signal } = (this.#controller = new AbortController());
 
 			// button event
-			button.addEventListener(
-				"click",
-				() => {
-					// invert theme
-					let themeChangeEvent = new CustomEvent("theme-change", {
-						detail: {
-							theme: rootInDarkMode() ? "light" : "dark",
-						},
-					});
-					// dispatch event -> ThemeProvider.astro
-					document.dispatchEvent(themeChangeEvent);
+			button.addEventListener("click", () => {
+				// invert theme
+				let themeChangeEvent = new CustomEvent("theme-change", {
+					detail: {
+						theme: rootInDarkMode() ? "light" : "dark",
+					},
+				});
+				// dispatch event -> ThemeProvider.astro
+				document.dispatchEvent(themeChangeEvent);
 
-					// set the aria-checked attribute
-					button.setAttribute("aria-checked", String(rootInDarkMode()));
-				},
-				{ signal }
-			);
-		}
-
-		disconnectedCallback() {
-			this.#controller?.abort();
+				// set the aria-checked attribute
+				button.setAttribute("aria-checked", String(rootInDarkMode()));
+			});
 		}
 	}
 

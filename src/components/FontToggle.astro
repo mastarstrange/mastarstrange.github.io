@@ -1,0 +1,79 @@
+<font-toggle class="ms-2">
+	<button
+		class="hover:text-accent relative h-9 w-9 cursor-pointer rounded-md p-2"
+		type="button"
+		aria-label="Change font family"
+	>
+		<span class="sr-only">Toggle Font Family</span>
+		<!-- Mono Icon -->
+		<svg
+			aria-hidden="true"
+			class="absolute start-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-100 opacity-100 transition-all data-[font='sans']:scale-0 data-[font='sans']:opacity-0 data-[font='serif']:scale-0 data-[font='serif']:opacity-0"
+			fill="none"
+			focusable="false"
+			stroke="currentColor"
+			stroke-width="1.5"
+			viewBox="0 0 24 24"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M17 15V7H9v8l4-4 4 4zm-8 2V7H3v10h6zm14 0V7h-6v10h6z"
+				stroke-linecap="round"
+				stroke-linejoin="round"></path>
+		</svg>
+		<!-- Serif Icon -->
+		<svg
+			aria-hidden="true"
+			class="absolute start-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all data-[font='serif']:scale-100 data-[font='serif']:opacity-100"
+			fill="none"
+			focusable="false"
+			stroke="currentColor"
+			stroke-width="1.5"
+			viewBox="0 0 24 24"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path d="M4 7V4h16v3M9 20h6M12 4v16" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+		<!-- Sans Icon -->
+		<svg
+			aria-hidden="true"
+			class="absolute start-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all data-[font='sans']:scale-100 data-[font='sans']:opacity-100"
+			fill="none"
+			focusable="false"
+			stroke="currentColor"
+			stroke-width="1.5"
+			viewBox="0 0 24 24"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path d="M4 20h3m10 0h3M7 20V4h10v16M7 12h10" stroke-linecap="round" stroke-linejoin="round"
+			></path>
+		</svg>
+	</button>
+</font-toggle>
+
+<script>
+	class FontToggle extends HTMLElement {
+		// constructor() {
+		// 	super();
+		// 	const button = this.querySelector("button")!;
+		// 	// Set initial state
+		// 	const currentFont = localStorage.getItem("font-family") || "mono";
+		// 	document.documentElement.setAttribute("data-font", currentFont);
+		// 	button.setAttribute("data-font", currentFont);
+		// 	// Handle clicks
+		// 	button.addEventListener("click", () => {
+		// 		const fonts = ["mono", "serif", "sans"];
+		// 		const currentFont = document.documentElement.getAttribute("data-font") || "mono";
+		// 		const currentIndex = fonts.indexOf(currentFont);
+		// 		const nextFont = fonts[(currentIndex + 1) % fonts.length];
+		// 		// Update DOM
+		// 		document.documentElement.setAttribute("data-font", nextFont);
+		// 		button.setAttribute("data-font", nextFont);
+		// 		// Save preference
+		// 		localStorage.setItem("font-family", nextFont);
+		// 	});
+		// }
+	}
+
+	customElements.define("font-toggle", FontToggle);
+</script>

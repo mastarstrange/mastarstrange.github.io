@@ -1,30 +1,40 @@
 ---
+import { type CollectionEntry, getCollection } from "astro:content";
 import SocialList from "@/components/SocialList.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
+import Note from "@/components/note/Note.astro";
+import { getAllPosts } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
-import { getAllPosts, sortMDByDate } from "@/data/post";
+import { collectionDateSort } from "@/utils/date";
 
-const MAX_POSTS = 10;
+const MAX_POSTS = 5;
 const allPosts = await getAllPosts();
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+const allPostsByDate = allPosts
+	.sort(collectionDateSort)
+	.slice(0, MAX_POSTS) as CollectionEntry<"post">[];
+
+const MAX_NOTES = 2;
+const allNotes = await getCollection("note");
+const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 ---
 
 <PageLayout meta={{ title: "home" }}>
-	<section class="transition-all duration-200 ease-in-out">
-		<h1 class="title mb-6">ヽ(⌐■_■)ノ♪♬</h1>
-		<p class="mb-4">
+	<section class="">
+		<h1 class="title mb-4">ヽ(⌐■_■)ノ♪♬</h1>
+		<p class="font-strong mb-4">
 			arigato gozaimasu for taking the time to visit my humble epiphany (/^▽^)/
 			<br />
 			<br />
-			this site is very much a work-in-progress now. and if you are wondering about the snake-case, yeah
-			that's here to stay. goals are to make this a blog that i'm proud of and possibly detailed progress
-			logging for my projects in the future.
+			finally i'm iterating on this site after so much self-conflict with which ssg to use. expect articles
+			and changes. go find the posts or find me in the following non-concensual data collection platforms.
 			<br />
 		</p>
 		<SocialList />
 	</section>
-	<section aria-label="blog" class="mt-16 transition-all duration-200 ease-in-out">
-		<h2 class="title mb-4 text-xl">posts</h2>
+	<section aria-label="blog" class="mt-8">
+		<h2 class="title text-accent mb-4 text-xl">
+			<a href="/posts/">posts</a>
+		</h2>
 		<ul class="space-y-4">
 			{
 				allPostsByDate.map((p) => (
@@ -35,4 +45,20 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 			}
 		</ul>
 	</section>
+	{
+		latestNotes.length > 0 && (
+			<section class="mt-6">
+				<h2 class="title text-accent mb-4 text-xl">
+					<a href="/tweets/">tweets</a>
+				</h2>
+				<ul class="space-y-4" role="list">
+					{latestNotes.map((note) => (
+						<li>
+							<Note note={note} as="h3" isPreview />
+						</li>
+					))}
+				</ul>
+			</section>
+		)
+	}
 </PageLayout>

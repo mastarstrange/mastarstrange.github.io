@@ -1,17 +1,22 @@
 ---
-import type { GetStaticPaths, Page } from "astro";
 import type { CollectionEntry } from "astro:content";
-
 import Pagination from "@/components/Paginator.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
+import { getAllPosts, getUniqueTags, groupPostsByYear } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
-import { getAllPosts, getUniqueTags, sortMDByDate } from "@/data/post";
+import { collectionDateSort } from "@/utils/date";
+import type { GetStaticPaths, Page } from "astro";
+import { Icon } from "astro-icon/components";
 
 export const getStaticPaths = (async ({ paginate }) => {
+	const MAX_POSTS_PER_PAGE = 20;
+	const MAX_TAGS = 7;
 	const allPosts = await getAllPosts();
-	const allPostsByDate = sortMDByDate(allPosts);
-	const uniqueTags = getUniqueTags(allPosts);
-	return paginate(allPostsByDate, { pageSize: 10, props: { uniqueTags } });
+	const uniqueTags = getUniqueTags(allPosts).slice(0, MAX_TAGS);
+	return paginate(allPosts.sort(collectionDateSort), {
+		pageSize: MAX_POSTS_PER_PAGE,
+		props: { uniqueTags },
+	});
 }) satisfies GetStaticPaths;
 
 interface Props {
@@ -22,45 +27,63 @@ interface Props {
 const { page, uniqueTags } = Astro.props;
 
 const meta = {
-	description: "ready my collection of posts and the things that interest me",
+	description: "read my collection of posts and the things that interest me",
 	title: "posts",
 };
 
 const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
-			text: `← previous posts`,
+			text: "← previous page",
 			url: page.url.prev,
 		},
 	}),
 	...(page.url.next && {
 		nextUrl: {
-			text: `next posts →`,
+			text: "next page →",
 			url: page.url.next,
 		},
 	}),
 };
+
+const groupedByYear = groupPostsByYear(page.data);
+const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 ---
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-6">posts</h1>
-	<div class="grid gap-y-16 sm:grid-cols-[3fr_1fr] sm:gap-x-8">
-		<section aria-label="blog post list">
-			<ul class="space-y-8 text-start">
-				{
-					page.data.map((p) => (
-						<li class="flex flex-col flex-wrap gap-2 sm:flex-row [&_q]:basis-full">
-							<PostPreview as="h2" post={p} withDesc />
-						</li>
-					))
-				}
-			</ul>
+	<div class="mb-6 flex items-center gap-3">
+		<h1 class="title">posts</h1>
+		<a class="text-accent" href="/rss.xml" target="_blank">
+			<span class="sr-only">rss feed</span>
+			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
+		</a>
+	</div>
+	<div class="grid font-semibold lowercase sm:grid-cols-[3fr_1fr] sm:gap-x-8 sm:gap-y-16">
+		<div>
+			{
+				descYearKeys.map((yearKey) => (
+					<section aria-labelledby={`year-${yearKey}`}>
+						<h2 id={`year-${yearKey}`} class="title text-lg">
+							<span class="sr-only">posts in</span>
+							{yearKey}
+						</h2>
+						<ul class="mt-3 mb-3 space-y-3 text-start">
+							{groupedByYear[yearKey]?.map((p) => (
+								<li class="grid gap-2 sm:grid-cols-[auto_1fr] sm:[&_q]:col-start-2">
+									<PostPreview post={p} />
+								</li>
+							))}
+						</ul>
+					</section>
+				))
+			}
 			<Pagination {...paginationProps} />
-		</section>
+		</div>
 		{
 			!!uniqueTags.length && (
 				<aside>
-					<h2 class="mb-4 flex items-center text-lg font-semibold">
+					<h2 class="title mb-4 flex items-center gap-2 text-lg">
+						tags
 						<svg
 							aria-hidden="true"
 							class="h-6 w-6"
@@ -77,24 +100,22 @@ const paginationProps = {
 							<path d="M17.573 18.407l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-7.117 -7.116" />
 							<path d="M6 9h-.01" />
 						</svg>
-						tags
 					</h2>
-					<ul class="flex flex-wrap gap-2 text-bgColor">
+					<ul class="flex flex-wrap gap-2">
 						{uniqueTags.map((tag) => (
 							<li>
-								<a
-									aria-label={`View all posts with the tag: ${tag}`}
-									class="flex items-center font-semibold justify-center rounded-lg bg-accent p-1"
-									href={`/tags/${tag}/`}
-								>
+								<a class="cactus-link flex items-center justify-center" href={`/tags/${tag}/`}>
+									<span aria-hidden="true">#</span>
+									<span class="sr-only">view all posts with the tag</span>
 									{tag}
 								</a>
 							</li>
 						))}
 					</ul>
 					<span class="mt-4 block sm:text-end">
-						<a aria-label="View all blog categories" class="sm:hover:text-accent" href="/tags/">
-							view all →
+						<a class="hover:text-link" href="/tags/">
+							view all <span aria-hidden="true">→</span>
+							<span class="sr-only">blog tags</span>
 						</a>
 					</span>
 				</aside>

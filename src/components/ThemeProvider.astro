@@ -1,8 +1,8 @@
-{/* Inlined to avoid FOUC. */}
+{/* Inlined to avoid FOUC. This is a parser blocking script. */}
 <script is:inline>
 	const lightModePref = window.matchMedia("(prefers-color-scheme: light)");
 
-	function getUserPref() {
+	function getUserThemePref() {
 		const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
 		return storedTheme || (lightModePref.matches ? "light" : "dark");
 	}
@@ -23,19 +23,16 @@
 
 		root.setAttribute("data-theme", newTheme);
 
-		const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
-		const bgColour = getComputedStyle(document.body).getPropertyValue("--theme-bg");
-		colorThemeMetaTag.setAttribute("content", `hsl(${bgColour})`);
 		if (typeof localStorage !== "undefined") {
 			localStorage.setItem("theme", newTheme);
 		}
 	}
 
 	// initial setup
-	setTheme(getUserPref());
+	setTheme(getUserThemePref());
 
 	// View Transitions hook to restore theme
-	document.addEventListener("astro:after-swap", () => setTheme(getUserPref()));
+	document.addEventListener("astro:after-swap", () => setTheme(getUserThemePref()));
 
 	// listen for theme-change custom event, fired in src/components/ThemeToggle.astro
 	document.addEventListener("theme-change", (e) => {

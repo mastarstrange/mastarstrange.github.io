@@ -1,13 +1,13 @@
-# site4thuva v002: `humbled`
+# sooriya
 
-### hola strangers! 👋🏽
+### hola amigos! 👋🏽
 
-this is the second version of my site made with lots of 🖤. so if you want to see some self loathing feel free to visit and surf.
+this is the second version of my site made with lots of 🖤. so if you want to
+see some self loathing feel free to surf.
 
 have fun learning.
 
-give it a star if you can and chill.
-see ya on the other side. ✌🏽
+give it a star if you can and chill. see ya on the other side. ✌🏽
 
 ## stack
 
@@ -18,19 +18,20 @@ see ya on the other side. ✌🏽
 
 ## todo
 
+- [ ] extract about page details
+- [ ] make blog more readable
+  - [ ] accent the bold, italic, underline, headings
 - [ ] add my projects page
-- [ ] cleanup about page and resume page
-- [ ] now page
-- [ ] add rest of my blog posts
-- [ ] try JetBrains Mono as content font
+- [ ] complete draft posts
+- [ ] proper tags display and sort in posts page
+- [ ] font switch button
+- [ ] smooth snappy transitions
 - [ ] welcome message in many langs
 - [ ] katex font issues
 - [ ] change theme toggle and search backtotop icons
 - [ ] ability to change font, preset zoom levels
 - [ ] make links and buttons interactive and responsive
-- [ ] automate submodule pull
-- [ ] ~portable markdown planning~ reorganize astro content folder structure for blog, lists, devlog
-- [x] ~proper logo setup~
+- [x] ~~proper logo setup~~
 - [x] redesign the logo
 - [x] proper color pallette
 - [x] fix satori

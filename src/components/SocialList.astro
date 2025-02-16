@@ -32,16 +32,16 @@ const socialLinks: {
 		link: "https://instagram.com/thuvasooriya",
 		name: "mdi:instagram",
 	},
-	{
-		friendlyName: "linkedin",
-		link: "https://linkedin.com/in/thuvasooriya",
-		name: "mdi:linkedin",
-	},
-	{
-		friendlyName: "pinterest",
-		link: "https://pinterest.com/thuvasooriya",
-		name: "mdi:pinterest",
-	},
+	// {
+	// 	friendlyName: "linkedin",
+	// 	link: "https://linkedin.com/in/thuvasooriya",
+	// 	name: "mdi:linkedin",
+	// },
+	// {
+	// 	friendlyName: "pinterest",
+	// 	link: "https://pinterest.com/thuvasooriya",
+	// 	name: "mdi:pinterest",
+	// },
 	// {
 	// 	friendlyName: "spotify",
 	// 	link: "https://open.spotify.com/user/31557wv7breljjzr744htxbumd7a",
@@ -57,9 +57,9 @@ const socialLinks: {
 			socialLinks.map(({ friendlyName, isWebmention, link, name }) => (
 				<li class="flex">
 					<a
-						class="inline-block p-1 sm:hover:text-link"
+						class="hover:text-link inline-block"
 						href={link}
-						rel={`noopener noreferrer ${isWebmention ? "me authn" : ""}`}
+						rel={`noreferrer ${isWebmention ? "me authn" : ""}`}
 						target="_blank"
 					>
 						<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name={name} />
